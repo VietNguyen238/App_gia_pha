@@ -11,8 +11,8 @@ import 'package:app_giao_hang/styles/app_text.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 
-class MainPage extends StatelessWidget {
-  const MainPage({super.key});
+class Home extends StatelessWidget {
+  const Home({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -53,17 +53,26 @@ class MainPage extends StatelessWidget {
                     ),
                   ),
                   CarouselSlider(
-                    options: CarouselOptions(height: 150.0),
-                    items: [1, 2, 3, 4, 5].map((i) {
+                    options: CarouselOptions(
+                      autoPlayAnimationDuration: Duration(milliseconds: 800),
+                      autoPlayCurve: Curves.fastOutSlowIn,
+                      viewportFraction: 0.85,
+                      enlargeCenterPage: true,
+                      enlargeFactor: 0.2,
+                      height: 150.0,
+                      autoPlay: true,
+                    ),
+                    items: bannerItem.map((item) {
                       return Builder(
                         builder: (BuildContext context) {
                           return Container(
-                              height: 200,
-                              width: 320,
-                              margin: EdgeInsets.symmetric(horizontal: 10.0),
+                              margin: EdgeInsets.symmetric(horizontal: 5.0),
                               child: ClipRRect(
                                 borderRadius: BorderRadius.circular(10),
-                                child: Image.asset(AppIcons.im_family1,
+                                child: Image.asset(item.image,
+                                    height: 150,
+                                    width:
+                                        MediaQuery.sizeOf(context).width - 60,
                                     fit: BoxFit.cover),
                               ));
                         },
@@ -162,6 +171,28 @@ class MainPage extends StatelessWidget {
     );
   }
 }
+
+class BannerItem {
+  String image;
+  BannerItem({
+    required this.image,
+  });
+}
+
+List<BannerItem> bannerItem = [
+  BannerItem(
+    image: AppIcons.im_family1,
+  ),
+  BannerItem(
+    image: AppIcons.im_people1,
+  ),
+  BannerItem(
+    image: AppIcons.im_people2,
+  ),
+  BannerItem(
+    image: AppIcons.im_people3,
+  ),
+];
 
 class CardFamilyItem {
   String image;
