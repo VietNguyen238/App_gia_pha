@@ -45,7 +45,7 @@ class MyBottomNavigation extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 60,
+      height: 65,
       child: Stack(
         children: [
           Positioned(

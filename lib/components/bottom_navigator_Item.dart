@@ -1,5 +1,6 @@
 import 'package:app_giao_hang/pages/main_page.dart';
 import 'package:app_giao_hang/styles/app_color.dart';
+import 'package:app_giao_hang/styles/app_styles.dart';
 import 'package:app_giao_hang/styles/app_text.dart';
 import 'package:flutter/material.dart';
 
@@ -28,6 +29,8 @@ class BottomNavigationItem extends StatelessWidget {
           GestureDetector(
             onTap: onPressed,
             child: Container(
+              padding: AppStyles.paddingPage,
+              decoration: const BoxDecoration(),
               child: Column(
                 children: [
                   Icon(
@@ -37,8 +40,9 @@ class BottomNavigationItem extends StatelessWidget {
                   Text(
                     label,
                     style: AppText.medium.copyWith(
-                      color: index == name ? AppColors.orange : AppColors.gray,
-                    ),
+                        color:
+                            index == name ? AppColors.orange : AppColors.gray,
+                        height: 1.3),
                   ),
                 ],
               ),
